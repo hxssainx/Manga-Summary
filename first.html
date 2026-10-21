@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Webpage</title>
+
+
+    <style>
+        /* =========================
+        BASIC RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 7%;
+            background:
+                radial-gradient(circle at top left, #102a43 0%, #07111F 35%),
+                #07111F;
+            color: #EAF6FF;
+            font-size: 19px;
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+        MAIN HEADING
+        ========================= */
+
+        h1 {
+            color: #FFB703;
+            text-align: center;
+            font-size: clamp(38px, 6vw, 60px);
+            margin: 20px 0 35px;
+
+            text-shadow:
+                0 0 8px rgba(255, 183, 3, 0.5),
+                0 0 25px rgba(255, 183, 3, 0.2);
+
+            letter-spacing: 2px;
+
+            animation: titleAppear 1s ease;
+        }
+
+
+        h2 {
+            color: #00D9FF;
+        }
+
+
+        /* =========================
+        LINKS
+        ========================= */
+
+        a {
+            color: #00D9FF;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        a:hover {
+            color: #FFB703;
+            text-shadow: 0 0 8px rgba(255, 183, 3, 0.5);
+        }
+
+
+        /* =========================
+        ORDERED LIST
+        ========================= */
+
+        ol {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px 45px;
+
+            background: rgba(13, 27, 42, 0.8);
+            border: 1px solid #1B4965;
+            border-radius: 15px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        li {
+            margin: 7px 0;
+            padding-left: 5px;
+            color: #D9F0FF;
+
+            transition: 0.25s ease;
+        }
+
+        li::marker {
+            color: #FFB703;
+            font-weight: bold;
+        }
+
+        li:hover {
+            color: #FFFFFF;
+            transform: translateX(8px);
+        }
+
+
+        /* =========================
+        HORIZONTAL LINE
+        ========================= */
+
+        hr {
+            border: none;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #00D9FF,
+                    #FFB703,
+                    transparent
+                );
+
+            margin: 60px 0;
+        }
+
+
+        /* =========================
+        TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+            margin: 30px auto;
+
+            border-collapse: separate;
+            border-spacing: 0;
+
+            background: #0D1B2A;
+            color: #EAF6FF;
+
+            border: 1px solid #1B4965;
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.35);
+
+            animation: tableAppear 1s ease;
+        }
+
+
+        th {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0077B6,
+                    #005f8f
+                );
+
+            color: #FFFFFF;
+
+            font-size: 18px;
+            padding: 17px;
+
+            border-bottom: 2px solid #00D9FF;
+
+            position: sticky;
+            top: 0;
+        }
+
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #1B4965;
+
+            text-align: center;
+            font-size: 17px;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        tr:nth-child(even) {
+            background-color: #102A43;
+        }
+
+
+        tr:hover td {
+            background-color: #163A5F;
+            color: #FFFFFF;
+        }
+
+
+        /* Status colors */
+
+        td:last-child {
+            font-weight: bold;
+        }
+
+
+        /* =========================
+        MANGA CARDS
+        ========================= */
+
+        .manga {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+
+            margin: 45px auto;
+            padding: 30px;
+
+            max-width: 1150px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(13, 27, 42, 0.98),
+                    rgba(16, 42, 67, 0.92)
+                );
+
+            border-radius: 18px;
+
+            border: 1px solid #1B4965;
+            border-left: 5px solid #00D9FF;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.35);
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        .manga:hover {
+            transform: translateY(-8px);
+
+            border-left-color: #FFB703;
+
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.45),
+                0 0 25px rgba(0, 217, 255, 0.12);
+        }
+
+
+        /* =========================
+        MANGA IMAGES
+        ========================= */
+
+        .manga img {
+            width: 200px;
+            height: 280px;
+
+            object-fit: cover;
+
+            flex-shrink: 0;
+
+            border-radius: 12px;
+
+            border: 2px solid #00D9FF;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.5);
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+
+        .manga:hover img {
+            transform: scale(1.04);
+
+            border-color: #FFB703;
+
+            box-shadow:
+                0 0 20px rgba(255, 183, 3, 0.25);
+        }
+
+
+        /* =========================
+        DESCRIPTION
+        ========================= */
+
+        .description {
+            flex: 1;
+        }
+
+
+        .description h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+
+            color: #FFB703;
+
+            font-size: 30px;
+
+            border-bottom: 1px solid #1B4965;
+            padding-bottom: 10px;
+        }
+
+
+        .description p {
+            font-size: 17px;
+            line-height: 1.8;
+
+            color: #D9F0FF;
+        }
+
+
+        .description p a {
+            color: #00D9FF;
+        }
+
+
+        /* =========================
+        PARAGRAPHS
+        ========================= */
+
+        body > p {
+            max-width: 1100px;
+            margin: 25px auto;
+
+            color: #C9E8F7;
+        }
+
+
+        /* =========================
+        IMAGE LOADING EFFECT
+        ========================= */
+
+        img {
+            background-color: #102A43;
+        }
+
+
+        /* =========================
+        SCROLLBAR
+        ========================= */
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #07111F;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0077B6;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00D9FF;
+        }
+
+
+        /* =========================
+        ANIMATIONS
+        ========================= */
+
+        @keyframes titleAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @keyframes tableAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================
+        MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 20px 5%;
+                font-size: 17px;
+            }
+
+            .manga {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                padding: 22px;
+            }
+
+            .manga img {
+                width: 180px;
+                height: 250px;
+            }
+
+            .description h2 {
+                font-size: 26px;
+            }
+
+            .description p {
+                font-size: 16px;
+            }
+
+            table {
+                font-size: 14px;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            th,
+            td {
+                padding: 12px;
+            }
+
+            ol {
+                padding-left: 40px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .manga img {
+                width: 160px;
+                height: 225px;
+            }
+
+            hr {
+                margin: 40px 0;
+            }
+        }
+
+
+        /* =========================
+        REDUCED MOTION
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        .back{
+            
+            padding-top: 2px;
+            text-align: center;
+            width: 100px;
+            height: 39px;
+
+            object-fit: cover;
+
+            flex-shrink: 0;
+
+            border-radius: 12px;
+
+            border: 2px solid #00D9FF;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.5);
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+            transform: translateY(-8px);
+
+            border-left-color: #FFB703;
+
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.45),
+                0 0 25px rgba(0, 217, 255, 0.12);
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1>My Manga List</h1>
+
+    Reading manga and manhwa is one of my favorite hobbies. I really enjoy getting lost in different stories, exploring new worlds, and following the journeys of interesting characters. Over time, I have read quite a few series, and every one of them has given me a different experience. Some made me laugh, some kept me excited, and some even left me emotional after finishing them. Till now, I have read 12 manga and 2 manhwa, and I am currently still reading a manga. Here is the list of the manga and manhwa I have read so far:
+
+    <ol>
+    <li>Umi no Misaki</li>
+    <li>Chainsaw Man</li>
+    <li>Sakamoto Days</li>
+    <li>Beatrice</li>
+    <li>Mashle: Magic and Muscles</li>
+    <li>Naruto</li>
+    <li>One Piece</li>
+    <li>A Couple of Cuckoos</li>
+    <li>We Never Learn</li>
+    <li>The Player Who Can't Level Up</li>
+    <li>Naruto: Shippuden</li>
+    <li>Nesiko: False Love</li>
+    <li>Fire Punch</li>
+    <li>I Want to Eat Your Pancreas</li>
+    <li>To Your Eternity</li>
+    </ol>
+
+    I am looking forward to reading many more manga and manhwa in the future and discovering even more amazing stories and characters. If you want to read mangas like me you can use <a href="https://mangafire.to/" target="_blank">MangaFire</a>
+
+    <hr>
+
+    <br>
+
+    <p>
+        Here is a list of all the manga and manhwa I have read so far.<br>
+        I have also included the number of chapters and volumes for each one,
+        along with whether the series is completed or still ongoing.
+    </p>
+
+    <table style="text-align: center;">
+
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Chapters
+        </th>
+        <th>
+            Volumes
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            Umi no Misaki
+        </td>
+        <td>
+            158
+        </td>
+        <td>
+            17
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Chainsaw Man
+        </td>
+        <td>
+            232
+        </td>
+        <td>
+            24
+        </td>
+        <td>
+            Ongoing
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Sakamoto Days
+        </td>
+        <td>
+            274+
+        </td>
+        <td>
+            27+
+        </td>
+        <td>
+            Ongoing
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Beatrice
+        </td>
+        <td>
+            158
+        </td>
+        <td>
+            -
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Mashle: Magic and Muscles
+        </td>
+        <td>
+            162
+        </td>
+        <td>
+            18
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Naruto
+        </td>
+        <td>
+            238
+        </td>
+        <td>
+            27
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            One Piece
+        </td>
+        <td>
+            1192+
+        </td>
+        <td>
+            114+
+        </td>
+        <td>
+            Ongoing
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            A Couple of Cuckoos
+        </td>
+        <td>
+            300+
+        </td>
+        <td>
+            33+
+        </td>
+        <td>
+            Ongoing
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            We Never Learn
+        </td>
+        <td>
+            187
+        </td>
+        <td>
+            21
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            The Player Who Can't Level Up
+        </td>
+        <td>
+            205+
+        </td>
+        <td>
+            -
+        </td>
+        <td>
+            Ongoing
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Naruto: Shippuden
+        </td>
+        <td>
+            456
+        </td>
+        <td>
+            45
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Nisekoi: False Love
+        </td>
+        <td>
+            229
+        </td>
+        <td>
+            25
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Fire Punch
+        </td>
+        <td>
+            83
+        </td>
+        <td>
+            8
+        </td>
+        <td class="completed">
+            Completed
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>
+            I Want to Eat Your Pancreas
+        </td>
+        <td>
+            10
+        </td>
+        <td>
+            2
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            To Your Eternity
+        </td>
+        <td>
+            201
+        </td>
+        <td>
+            25
+        </td>
+        <td>
+            Completed
+        </td>
+    </tr>
+
+    </table>
+
+    <p>
+        Let's talk about them one by one.
+    </p>
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Umi no Misaki.jpg" alt="Umi no Misaki">
+
+        <div class="description">
+            <h2>Umi no Misaki</h2>
+            <p>
+                <a href="https://mangafire.to/title/q9w-umi-no-misakii" target="_blank">
+                    <i>Umi no Misaki</i>
+                </a>
+                is a romance manga centered around Nagi, a young man who moves
+                to a remote island and becomes involved with three mysterious girls.
+                The story focuses on romance, relationships, jealousy, and the
+                island's traditions. As Nagi spends more time on the island, he
+                becomes connected to its mysterious culture and the lives of the
+                girls. The manga combines romance with supernatural elements and
+                explores complicated relationships and emotions.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Chainsaw Man.webp" alt="Chainsaw Man">
+
+        <div class="description">
+            <h2>Chainsaw Man</h2>
+            <p>
+                <a href="https://mangafire.to/title/0w5k-chainsaw-mann" target="_blank">
+                    <i>Chainsaw Man</i>
+                </a>
+                follows Denji, a poor young man who spends his life hunting devils
+                to pay off his debts. His only companion is Pochita, a small chainsaw
+                devil. After a tragic event, Denji gains the ability to transform
+                into Chainsaw Man and joins the Public Safety Devil Hunters. The story
+                is filled with action, horror, comedy, and emotional moments. It also
+                explores loneliness, friendship, desire, manipulation, and Denji's
+                wish to live a normal life.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Sakamoto Days.jpg" alt="Sakamoto Days">
+
+        <div class="description">
+            <h2>Sakamoto Days</h2>
+            <p>
+                <a href="https://mangafire.to/title/8037o-sakamoto-dayss" target="_blank">
+                    <i>Sakamoto Days</i>
+                </a>
+                follows Taro Sakamoto, a legendary hitman who leaves his dangerous
+                career behind after falling in love and starting a family. He now
+                runs a small convenience store and wants to live a peaceful life.
+                However, his past catches up with him when dangerous assassins
+                begin appearing. Despite becoming a family man, Sakamoto still
+                possesses incredible fighting abilities. The manga combines action,
+                comedy, friendship, and exciting battles.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+        
+        <img src="C:\Users\DELL\Pictures\first\Beatrice.jpg" alt="Beatrice">
+
+        <div class="description">
+            <h2>Beatrice</h2>
+            <p>
+                <a href="https://mangafire.to/title/293oq-beatricee" target="_blank">
+                    <i>Beatrice</i>
+                </a>
+                is a fantasy romance manhwa centered around Claris, a princess
+                whose life changes after her kingdom falls. Forced to hide her
+                identity, she becomes a servant and struggles to survive in a
+                completely different world. She eventually meets Duke Eustace,
+                a powerful man with his own complicated past. Their relationship
+                develops slowly as they learn more about each other. The story
+                combines romance, fantasy, political conflict, social inequality,
+                and character development.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Mashle  Magic and Muscles.jfif" alt="Mashle: Magic and Muscles">
+
+        <div class="description">
+            <h2>Mashle: Magic and Muscles</h2>
+            <p>
+                <a href="https://mangafire.to/title/w182l-mashle-magic-and-muscles" target="_blank">
+                    <i>Mashle: Magic and Muscles</i>
+                </a>
+                takes place in a world where magic determines a person's social
+                status. Mash Burnedead, however, was born without magical abilities.
+                To protect his peaceful life with his father, Mash enters a
+                prestigious magic school and attempts to become a Divine Visionary.
+                Instead of using magic, Mash relies on his incredible physical
+                strength. The manga combines comedy, action, magic, and school life.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="https://m.media-amazon.com/images/M/MV5BZTNjOWI0ZTAtOGY1OS00ZGU0LWEyOWYtMjhkYjdlYmVjMDk2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Naruto">
+
+        <div class="description">
+            <h2>Naruto</h2>
+            <p>
+                <a href="https://mangafire.to/title/92kk8-naruto" target="_blank">
+                    <i>Naruto</i>
+                </a>
+                follows Naruto Uzumaki, a young ninja from the Hidden Leaf Village
+                who dreams of becoming Hokage. Because the Nine-Tailed Fox is sealed
+                inside him, Naruto grows up feeling isolated and rejected. Despite
+                this, he refuses to give up on his dream. Alongside Sasuke, Sakura,
+                and their teacher Kakashi, Naruto goes on dangerous missions and
+                becomes stronger. The story explores friendship, rivalry, loneliness,
+                sacrifice, and the consequences of hatred.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\One Piece.jpeg" alt="One Piece">
+
+        <div class="description">
+            <h2>One Piece</h2>
+            <p>
+                <a href="https://mangafire.to/title/dkw-one-piece" target="_blank">
+                    <i>One Piece</i>
+                </a>
+                follows Monkey D. Luffy, a cheerful pirate who dreams of finding
+                the legendary One Piece and becoming the Pirate King. After gaining
+                rubber-like abilities from a Devil Fruit, Luffy begins his journey
+                across the sea and forms the Straw Hat Pirates. Together, they
+                explore strange islands, meet countless characters, and face pirates,
+                Marines, and powerful enemies. The series combines comedy, action,
+                adventure, friendship, and emotional storytelling.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\A Couple of Cuckoos.jpg" alt="A Couple of Cuckoos">
+
+        <div class="description">
+            <h2>A Couple of Cuckoos</h2>
+            <p>
+                <a href="https://mangafire.to/title/qz185-kakkou-no-iinazuke-oneshot" target="_blank">
+                    <i>A Couple of Cuckoos</i>
+                </a>
+                is a romantic comedy about Nagi Umino and Erika Amano. They discover
+                that they were accidentally switched at birth, which causes their
+                families to become connected. Their parents eventually arrange for
+                them to marry, creating an unusual situation. Nagi already has
+                feelings for someone else, while Erika has her own reasons for
+                accepting the arrangement. The manga combines romance, comedy,
+                school life, family relationships, and misunderstandings.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\We Never Learn.jpg" alt="We Never Learn">
+
+        <div class="description">
+            <h2>We Never Learn</h2>
+            <p>
+                <a href="https://mangafire.to/title/ox4-we-never-learn" target="_blank">
+                    <i>We Never Learn</i>
+                </a>
+                follows Nariyuki Yuiga, a hardworking student who wants to receive
+                a scholarship to help his family. He is assigned to tutor three
+                talented girls: Rizu Ogata, Fumino Furuhashi, and Uruka Takemoto.
+                Although each girl is talented in one subject, she struggles with
+                another. Nariyuki helps them prepare for their exams while becoming
+                closer to them. The manga combines comedy, romance, school life,
+                and personal growth.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\The Player Who Can't Level Up.jfif" alt="The Player Who Can't Level Up">
+
+        <div class="description">
+            <h2>The Player Who Can't Level Up</h2>
+            <p>
+                <a href="https://mangafire.to/title/4qpno-the-player-who-cant-level-up" target="_blank">
+                    <i>The Player Who Can't Level Up</i>
+                </a>
+                is a fantasy action manhwa about Kim Gigyu, a young man who awakens
+                as a player but discovers that he cannot level up normally. Instead
+                of giving up, Gigyu discovers that his abilities work differently
+                from those of other players. He begins exploring dangerous gates
+                and fighting monsters while discovering the hidden potential of his
+                powers. The story features dungeon battles, monsters, powerful
+                enemies, mysterious organizations, and secrets about the world.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Naruto  Shippuden.webp" alt="Naruto: Shippuden">
+
+        <div class="description">
+            <h2>Naruto: Shippuden</h2>
+            <p>
+                <a href="https://mangafire.to/title/92kk8-naruto" target="_blank">
+                    <i>Naruto: Shippuden</i>
+                </a>
+                represents the second major part of Naruto's story, following Naruto
+                after he returns to the Hidden Leaf Village following years of
+                training. Naruto continues his goal of becoming Hokage while trying
+                to bring Sasuke back to the village. The story becomes darker as
+                Naruto and his friends face the Akatsuki and other powerful enemies.
+                It explores themes of war, revenge, friendship, sacrifice, loss,
+                and the cycle of hatred.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Nisekoi False Love.jpg" alt="Nisekoi: False">
+
+        <div class="description">
+            <h2>Nisekoi: False Love</h2>
+            <p>
+                <a href="https://mangafire.to/title/l326-nisekoi-false-love" target="_blank">
+                    <i>Nisekoi: False Love</i>
+                </a>
+                follows Raku Ichijo, the son of a yakuza leader, who becomes involved
+                with Chitoge Kirisaki, the daughter of a rival gang leader. To prevent
+                conflict between their families, they are forced to pretend to be
+                a couple even though they constantly argue. Raku also has feelings
+                for another girl and remembers a childhood promise connected to a
+                mysterious locket. The manga combines romance, comedy, school life,
+                friendship, and mystery.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\Fire Punch.jpg" alt="Fire Punch">
+
+        <div class="description">
+            <h2>Fire Punch</h2>
+            <p>
+                <a href="https://mangafire.to/title/pj4-fire-punchh" target="_blank">
+                    <i>Fire Punch</i>
+                </a>
+                is a dark fantasy manga set in a frozen world where humanity is
+                struggling to survive. The story follows Agni, a young man with
+                extraordinary regenerative abilities, whose life is changed forever
+                after a devastating event. Driven by revenge, Agni begins a brutal
+                journey through a world filled with violence, suffering, and strange
+                supernatural powers. The manga explores themes of revenge, morality,
+                survival, identity, and the consequences of hatred. It combines dark
+                fantasy, action, tragedy, and psychological elements to create a
+                unique and unpredictable story.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\I Want to Eat Your Pancreas.jfif" alt="I Want to Eat Your Pancreas">
+
+        <div class="description">
+            <h2>I Want to Eat Your Pancreas</h2>
+            <p>
+                <a href="https://mangafire.to/title/rj3y-i-want-to-eat-your-pancreass" target="_blank">
+                    <i>I Want to Eat Your Pancreas</i>
+                </a>
+                follows a quiet high school boy who discovers the diary of his
+                classmate Sakura Yamauchi. He learns that Sakura has a terminal
+                illness and has limited time left. Although they have completely
+                different personalities, they slowly become friends. Sakura is
+                energetic and wants to enjoy every moment, while the protagonist
+                is quiet and prefers to stay away from others. Their friendship
+                changes both of them as they spend time together.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="manga">
+
+        <img src="C:\Users\DELL\Pictures\first\To Your Eternity.jpg" alt="To Your Eternity">
+
+        <div class="description">
+            <h2>To Your Eternity</h2>
+            <p>
+                <a href="https://mangafire.to/title/yqw1p-to-you-the-immortal" target="_blank">
+                    <i>To Your Eternity</i>
+                </a>
+                follows Fushi, an immortal being who is sent to Earth by an unknown
+                creator. At first, Fushi has no human identity and gradually learns
+                about the world by taking the forms of beings he encounters. Through
+                the people he meets, he experiences friendship, love, loss, pain,
+                and happiness. Every relationship changes Fushi and helps him
+                understand humanity. As he grows stronger, he faces mysterious
+                creatures called Nokkers and increasingly dangerous challenges.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="back" style="text-align: center;">
+        <a href="Home.html">Home</a>
+    </div>
+
+
+</body>
+</html>
